@@ -1,0 +1,46 @@
+﻿@model Chef
+
+<div class="contenedor">
+    <nav>
+        <a asp-controller="Chef" asp-action="Index" method="GET">Chefs</a>
+        <span> | </span>
+        <a asp-controller="Dish" asp-action="Index" method="GET">Dishes</a>
+        <span> | </span>
+        <span>Add a Chef</span>
+        <span> | </span>
+        <a asp-controller="Dish" asp-action="AgregarDish" method="GET">Add a Dish</a>
+    </nav>
+    <h1 class="titulo">Add a chef</h1>
+    <form asp-action="AgregarChef" asp-controller="Chef" method="POST">
+        <div class="cuadroPrincipal">
+            <div class="columnaUno">
+                <div class="cuadroTexto">
+                    <div class="campoTexto">
+                        <label asp-for="FirstName">First Name:</label>
+                        <input asp-for="FirstName" />
+                    </div>
+                    <span asp-validation-for="FirstName"></span>
+                </div>
+                <div class="cuadroTexto">
+                    <div class="campoTexto">
+                        <label asp-for="LastName"> Last Name:</label>
+                        <input asp-for="LastName" />
+                    </div>
+                    <span asp-validation-for="LastName"></span>
+                </div>
+                <div class="cuadroTexto">
+                    <div class="campoTexto">
+                        <label asp-for="DateBirth">Date of Birth:</label>
+                        <input asp-for="DateBirth" />
+                    </div>
+                    <span asp-validation-for="DateBirth"></span>
+                </div>
+            </div>
+            <div class="cuadroBoton">
+                <button id="identidad">Add Chef</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+

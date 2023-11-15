@@ -1,0 +1,51 @@
+﻿@model List<Dish>
+
+<div class="contenedor">
+    <nav>
+        <a asp-controller="Chef" asp-action="Index" method="GET">Chefs</a>
+        <span> | </span>
+        <span>Dishes</span>
+        <span> | </span>
+        <a asp-controller="Chef" asp-action="AgregarChef" method="GET">Add a Chef</a>
+        <span> | </span>
+        <a asp-controller="Dish" asp-action="AgregarDish" method="GET">Add a Dish</a>
+    </nav>
+    <h1 class="titulo">Yum! Check out our tasty dishes!</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Chef
+                </th>
+                <th>
+                    Tastiness
+                </th>
+                <th>
+                    Calories
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Cocinero.NombreCompleto
+                    </td>
+                    <td>
+                        @item.Tastiness
+                    </td>
+                    <td>
+                        @item.Calories
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

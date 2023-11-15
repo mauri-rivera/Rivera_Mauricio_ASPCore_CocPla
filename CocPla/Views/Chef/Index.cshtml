@@ -1,0 +1,53 @@
+﻿@model List<Chef>
+
+<div class="contenedor">
+    <nav>
+        <span>Chefs</span>
+        <span> | </span>
+        <a asp-controller="Dish" asp-action="Index" method="GET">Dishes</a>
+        <span> | </span>
+        <a asp-controller="Chef" asp-action="AgregarChef" method="GET">Add a Chef</a>
+        <span> | </span>
+        <a asp-controller="Dish" asp-action="AgregarDish" method="GET">Add a Dish</a>
+    </nav>
+    <h1 class="titulo">Check out our roster of chefs!</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Age
+                </th>
+                <th>
+                    # of Dishes
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.NombreCompleto
+                    </td>
+                    <td>
+                        @{
+                            DateTime fechaActual = DateTime.Today;
+                            DateTime fechaNacimiento = item.DateBirth;
+                            TimeSpan difFecha = fechaActual - fechaNacimiento;
+                            @Math.Floor(difFecha.TotalDays / 365.225);
+                        }
+                    </td>
+                    <td>
+                        @item.TotalPlatos.Count()
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

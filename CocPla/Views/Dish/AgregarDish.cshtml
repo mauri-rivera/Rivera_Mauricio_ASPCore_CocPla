@@ -1,0 +1,69 @@
+﻿@model Dish
+
+<div class="contenedor">
+    <nav>
+        <a asp-controller="Chef" asp-action="Index" method="GET">Chefs</a>
+        <span> | </span>
+        <a asp-controller="Dish" asp-action="Index" method="GET">Dishes</a>
+        <span> | </span>
+        <a asp-controller="Chef" asp-action="AgregarChef" method="GET">Add a Chef</a>
+        <span> | </span>
+        <span>Add a Dish</span>
+    </nav>
+    <h1 class="titulo">Add a dish</h1>
+    <form asp-controller="Dish" asp-action="AgregarDish" method="POST">
+        <div class="listaColumna">
+            <div class="columnaVarias">
+                <div class="cuadroTexto">
+                    <div class="campoTextoDos">
+                        <label asp-for="Name">Name of Dish</label>
+                        <input asp-for="Name">
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                </div>
+                <div class="cuadroTexto">
+                    <div class="campoTextoDos">
+                        <label asp-for="Calories"># of Calories</label>
+                        <input asp-for="Calories" pattern="^[0-9]+"
+                               onkeypress="return event.charCode >= 48" min="1" oninput="this.value = Math.max(this.value, 1)"
+                               placeholder="# of Calories">
+                        <span asp-validation-for="Calories"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="columnaVarias">
+                <div class="cuadroTexto">
+                    <div class="campoTextoTres">
+                        <label asp-for=Cocinero.NombreCompleto>Chef's Name</label>
+                        @{
+                            <select class="campoSelector" name="nombreCompleto">
+                                @foreach (var n in ViewBag.NombreCompleto)
+                                {
+                                    <option>@n</option>
+                                }
+                            </select>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="columnaVariasDos">
+                <div class="cuadroTexto">
+                    <div class="campoTextoCuatro">
+                        <label asp-for="Tastiness"></label>
+                        @{
+                            <select class="campoSelectorDos" asp-for="Tastiness">
+                                @for (int i = 1; i < 6; i++)
+                                {
+                                    <option>@i</option>
+                                }
+                            </select>
+                        }
+                    </div>
+                </div>
+                <div class="cuadroBoton">
+                    <button>Add Dish</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
