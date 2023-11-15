@@ -17,8 +17,6 @@ namespace CocPla.Controllers
 
         public string NombreChef { get; private set; }
 
-        //public static List<string> listaNombre = new List<string>();
-
         public DishController(MyContext context)
         {
             _context = context;
